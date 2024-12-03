@@ -1,6 +1,6 @@
 {
     "login_method": "email",
-	"vote_count": 3
+    "vote_count": 3,
     "email": "",
-    "password": "",
+    "password": ""
 }

@@ -6,6 +6,6 @@
 
 #### `config.json`中的參數解釋:
  - login_method : 可選 "google", "facebook", "email" (目前僅先支援email)
- - vote_count : 每次登入要投票的次數(最大3、最小1)
+ - vote_count : 每次登入要投票的次數(最大3、最小1，可使用3直接投好投滿)
  - email : 請輸入您的 email
  - password : 請輸入您的 password

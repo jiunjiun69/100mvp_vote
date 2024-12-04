@@ -63,14 +63,16 @@
 ### 2. 公司模式 `company` (直接連外網會擋住)
 適用於需經代理伺服器連外網的情境：
 - 設定 `mode` 為 `"company"`。
+- 填寫您註冊經理人網站的 **Email** 和 **Password**。
 - 填寫 **代理伺服器** (`http`/`https`)、**AD 帳號** 和 **密碼**。
 - 程式將透過代理下載 ChromeDriver。
 
 ### 3. 手動模式 `manual` (將瀏覽器驅動預先下載至本地運行，較穩定)
 適用於希望手動管理 ChromeDriver 的情境：
 1. 設定 `mode` 為 `"manual"`。
-2. 手動下載 ChromeDriver，並將其放置在與執行檔同一目錄。
-3. 填寫 `chromedriver_path` 為 ChromeDriver 的檔案名稱或完整路徑。
+2. 填寫您註冊經理人網站的 **Email** 和 **Password**。
+3. 手動下載 ChromeDriver，並將其放置在與執行檔同一目錄。
+4. 填寫 `chromedriver_path` 為 ChromeDriver 的檔案名稱或完整路徑。
 
 ---
 

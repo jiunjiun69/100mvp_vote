@@ -80,7 +80,7 @@
 2. 前往以下網站下載對應版本的 ChromeDriver (win64沒有的話就選win32，記得名稱要是chromedriver)：
    - [最新版 ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)
    - [舊版 ChromeDriver](https://chromedriver.storage.googleapis.com/index.html) （若需要）
-3. 下載後將 `chromedriver.exe` 解壓縮並放置於與 `100mvp_vote.exe` 相同的目錄。
+3. 下載後將 `chromedriver.exe` 解壓縮並放置於與 `100mvp_vote.exe` 相同的目錄(替換掉目前的 `chromedriver.exe`)。
 
 ---
 

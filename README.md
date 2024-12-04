@@ -1,28 +1,95 @@
 # 自動化投票程式
 
-## 目前僅先支援使用註冊好的email + password的方式自動登入 (暫時不支援使用第三方google、facebook方式自動登入)
-
-### 只需要在 `config.json` 中填入註冊好的`email`以及`password`再執行程式就可以了(懶惰的話可以使用Windows的工作排程器定時跑)
-
-#### `config.json`中的參數解釋:
- - mode : 可選值: "home", "company", "manual" (在公司外面可以連外網使用"home"，在公司內部請使用"company" + 設定proxy 或是 "manual" + 下載驅動)
- - proxy : mode 選擇為"company"時才須設定，將"proxy"中的"http"及"https"替換為公司proxy主機；"proxy"中的"username"替換為AD帳號，"password"替換為AD密碼
- - chromedriver_path : mode 選擇為"manual"時才須設定，Chrome瀏覽器驅動目錄，基本上將瀏覽器驅動與執行檔放置同一目錄下就不用修改 (建議維持原樣)
- - login_method : 可選 "google", "facebook", "email" (目前僅先支援email)
- - vote_count : 每次登入要投票的次數(最大3、最小1，可使用3直接投好投滿)
- - email : 請輸入您註冊經理人網站的 email
- - password : 請輸入您註冊經理人網站的 password
-
-
-需先將 `100mvp_vote.rar` 壓縮檔解壓縮出執行檔 `100mvp_vote.exe`，將 `100mvp_vote.exe` 其與 `config.json` 放置至同一層目錄中，並在 `config.json` 中設定好自己的`email`以及`password`就可以執行了
+## 功能簡介
+此程式目前支援透過 **註冊好的 Email 與密碼** 自動登入進行投票（暫不支援 Google 或 Facebook 第三方登入）。  
+只需在 `config.json` 中填入 **Email** 與 **Password**，並執行程式即可完成自動投票！  
+*提示：可搭配 Windows 的排程器定時執行，實現全自動化投票。*
 
 ---
 
-## mode 切換注意事項:
-1. ["mode": "home"] 如果在家使用的話(可以連到外網)，僅需將mode設定為home，再設定email與password為註冊經理人網站的郵件與密碼就可以執行了
-2. ["mode": "company"] 如果在公司使用的話(連線外網會擋住)，因為程式中會需要連外網抓取瀏覽器驅動程式，因此會需要設定proxy連出去外網，需將mode設定為company，並將proxy中的proxy主機、port號與ad帳號密碼設置完成才能連線出去，再設定email與password為註冊經理人網站的郵件與密碼就可以執行了
-3. ["mode": "manual"] 如果想要直接執行本地瀏覽器驅動(將瀏覽器驅動預先下載至本地運行，較穩定)，就不需要設定proxy了，不過需要先去下載瀏覽器驅動程式，將其 `chromedriver.exe` 執行檔放置至與 `100mvp_vote.exe` 自動投票執行檔同一層的目錄中，再設定email與password為註冊經理人網站的郵件與密碼就可以執行了
-   - 瀏覽器驅動下載流程(目前以Google Chrome為主)
-      1. 在Google Chrome瀏覽器網址列輸入 `chrome://settings/help` ，找到目前的版本號(目前本儲存庫為131.0.6778)
-      2. 前往官方網站下載瀏覽器驅動程式: `https://googlechromelabs.github.io/chrome-for-testing/` (如果瀏覽器版本過舊，可以到此網址去找: `https://chromedriver.storage.googleapis.com/index.html`)
-      3. 下載 win64 或 win32 的 chromedriver ，將其解壓縮後的 `chromedriver.exe` 執行檔放置至與 `100mvp_vote.exe` 自動投票執行檔同一層的目錄中就完成了
+## 快速開始
+
+### 步驟 1：下載與解壓縮
+1. 從專案下載 `100mvp_vote.rar`。
+2. 解壓縮後將 **執行檔 `100mvp_vote.exe`** 與 **設定檔 `config.json`** 放置於同一目錄。
+
+### 步驟 2：設定 `config.json`
+根據您的使用情境，設定以下參數：
+
+```json
+{
+    "mode": "home",  // 模式選擇: "home", "company", "manual"
+    "proxy": {
+        "http": "http://proxy_host:proxy_port",  // 公司模式需設定
+        "https": "http://proxy_host:proxy_port",
+        "username": "ad_username",  // AD 使用者名稱
+        "password": "ad_password"   // AD 密碼
+    },
+    "chromedriver_path": "chromedriver.exe",  // 手動模式需指定，若`chromedriver.exe`與`100mvp_vote.exe`放置同一層目錄時則不需更改
+    "login_method": "email",  // 登入方式: 僅支援 "email"
+    "vote_count": 3,  // 每次登入的投票次數 (1 至 3 次)
+    "email": "vote_email",  // 經理人網站註冊的 Email
+    "password": "vote_password"  // 經理人網站註冊的密碼
+}
+```
+
+### 步驟 3：執行程式
+在同一目錄下執行 `100mvp_vote.exe`，程式將自動依據設定進行操作。
+
+---
+
+## 配置參數說明
+
+| **參數**         | **描述**                                                                                   | **範例值**                                                                 |
+|-------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `mode`            | 模式選擇：`home`、`company`、`manual`                                                    | `"home"`、`"company"`、`"manual"`                                          |
+| `proxy`           | 公司模式需設定代理，包含 `http` 和 `https` 主機、`username` 和 `password`                | `"http": "http://proxy.company.com:8080"`                                  |
+| `chromedriver_path` | 手動模式需指定 ChromeDriver 的執行檔路徑                                                | `"chromedriver_path": "chromedriver.exe"`                                  |
+| `login_method`    | 登入方式，目前僅支援 Email                                                               | `"email"`                                                                  |
+| `vote_count`      | 每次登入的投票次數，最大值為 3                                                            | `3`                                                                        |
+| `email`           | 經理人網站的註冊 Email                                                                   | `"vote_email@example.com"`                                                |
+| `password`        | 經理人網站的註冊密碼                                                                     | `"your_password"`                                                          |
+
+---
+
+## 模式說明
+
+### 1. 家庭模式 `home` (可以連到外網)
+適用於能直接連外網的情境：
+- 設定 `mode` 為 `"home"`。
+- 填寫您註冊經理人網站的 **Email** 和 **Password**。
+- 程式將自動下載並使用適合的 ChromeDriver。
+
+### 2. 公司模式 `company` (直接連外網會擋住)
+適用於需經代理伺服器連外網的情境：
+- 設定 `mode` 為 `"company"`。
+- 填寫 **代理伺服器** (`http`/`https`)、**AD 帳號** 和 **密碼**。
+- 程式將透過代理下載 ChromeDriver。
+
+### 3. 手動模式 `manual` (將瀏覽器驅動預先下載至本地運行，較穩定)
+適用於希望手動管理 ChromeDriver 的情境：
+1. 設定 `mode` 為 `"manual"`。
+2. 手動下載 ChromeDriver，並將其放置在與執行檔同一目錄。
+3. 填寫 `chromedriver_path` 為 ChromeDriver 的檔案名稱或完整路徑。
+
+---
+
+## 手動下載 ChromeDriver (手動模式 `manual`才須做此項操作)
+### 步驟
+1. 在 Google Chrome 瀏覽器的網址列輸入 `chrome://settings/help`，找到您的 **瀏覽器版本號(目前本儲存庫為131.0.6778)**。
+2. 前往以下網站下載對應版本的 ChromeDriver (win64沒有的話就選win32，記得名稱要是chromedriver)：
+   - [最新版 ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)
+   - [舊版 ChromeDriver](https://chromedriver.storage.googleapis.com/index.html) （若需要）
+3. 下載後將 `chromedriver.exe` 解壓縮並放置於與 `100mvp_vote.exe` 相同的目錄(替換掉目前的 `chromedriver.exe`)。
+
+---
+
+## 注意事項
+1. **目前限制**：僅支援使用 Email 登入。
+2. **公司模式代理設定**：確保 `proxy` 配置正確，並提供合法的 AD 帳號密碼。
+3. **手動模式穩定性**：手動下載 ChromeDriver 可避免版本不符問題，但需自行管理。
+
+---
+
+## 開發者聯絡
+如需協助或有其他建議，歡迎提出 Issue 或 Pull Request。

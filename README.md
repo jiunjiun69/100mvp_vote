@@ -6,6 +6,9 @@
 
 #### `config.json`中的參數解釋:
  - login_method : 可選 "google", "facebook", "email" (目前僅先支援email)
- - vote_count : 每次登入要投票的次數(最大3、最小1)
+ - vote_count : 每次登入要投票的次數(最大3、最小1，可使用3直接投好投滿)
  - email : 請輸入您的 email
  - password : 請輸入您的 password
+
+
+需先將 `100mvp_vote.rar` 壓縮檔解壓縮出執行檔 `100mvp_vote.exe`，將 `100mvp_vote.exe` 其與 `config.json` 放置至同一層目錄中，並在 `config.json` 中設定好自己的`email`以及`password`就可以執行了

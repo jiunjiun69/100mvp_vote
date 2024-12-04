@@ -8,7 +8,14 @@
     },
     "chromedriver_path": "chromedriver.exe",
     "login_method": "email",
+<<<<<<< HEAD
     "vote_count": 0,
     "email": "vote_email",
     "password": "vote_password"
 }
+=======
+    "vote_count": 3,
+    "email": "",
+    "password": ""
+}
+>>>>>>> 5da175a48812b817b7ffc17490393503929c69d6

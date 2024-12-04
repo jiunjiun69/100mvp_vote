@@ -10,8 +10,8 @@
 ## 快速開始
 
 ### 步驟 1：下載與解壓縮
-1. 從專案下載 `100mvp_vote.zip`。
-2. 解壓縮後將 **執行檔 `100mvp_vote.exe`** 與 **設定檔 `config.json`** 放置於同一目錄。
+1. 從[Releases](https://github.com/jiunjiun69/100mvp_vote/releases/tag/v1.0.0) 下載 `100mvp_vote.exe`執行檔。
+2. 將 **執行檔 `100mvp_vote.exe`** 與 **設定檔 `config.json`** 放置於同一目錄。
 
 ### 步驟 2：設定 `config.json`
 根據您的使用情境，設定以下參數：
@@ -80,7 +80,7 @@
 2. 前往以下網站下載對應版本的 ChromeDriver (win64沒有的話就選win32，記得名稱要是chromedriver)：
    - [最新版 ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)
    - [舊版 ChromeDriver](https://chromedriver.storage.googleapis.com/index.html) （若需要）
-3. 下載後將 `chromedriver.exe` 解壓縮並放置於與 `100mvp_vote.exe` 相同的目錄。
+3. 下載後將 `chromedriver.exe` 解壓縮並放置於與 `100mvp_vote.exe` 相同的目錄(替換掉目前的 `chromedriver.exe`)。
 
 ---
 

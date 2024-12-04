@@ -1,6 +1,14 @@
 {
+    "mode": "home",
+    "proxy": {
+        "http": "http://proxy_host:proxy_port",
+        "https": "http://proxy_host:proxy_port",
+        "username": "ad_username",
+        "password": "ad_password"
+    },
+    "chromedriver_path": "chromedriver.exe",
     "login_method": "email",
-	"vote_count": 3
-    "email": "",
-    "password": "",
+    "vote_count": 0,
+    "email": "vote_email",
+    "password": "vote_password"
 }

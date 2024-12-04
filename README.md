@@ -78,7 +78,7 @@
 
 ## 手動下載 ChromeDriver (手動模式 `manual`才須做此項操作)
 ### 步驟
-1. 在 Google Chrome 瀏覽器的網址列輸入 `chrome://settings/help`，找到您的 **瀏覽器版本號(目前本儲存庫為131.0.6778)**。
+1. 在 Google Chrome 瀏覽器的網址列輸入 `chrome://settings/help`，找到您的 **瀏覽器版本號(目前本儲存庫的`chromedriver.exe`版本為131.0.6778)**。
 2. 前往以下網站下載對應版本的 ChromeDriver (win64沒有的話就選win32，記得名稱要是chromedriver)：
    - [最新版 ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)
    - [舊版 ChromeDriver](https://chromedriver.storage.googleapis.com/index.html) （若需要）
